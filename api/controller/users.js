@@ -4,7 +4,6 @@ const {modelUser} = require("../models");
 const getUsers = async (req, res) =>{
     try{
         // const { query:{range} } = req; 
-  
         const users = await modelUser.find({}); 
         res.status(201).send(users); 
     }catch(e){
@@ -27,7 +26,7 @@ const createUser = async (req, res) =>{
     try{
         const { body } = req; 
         const user = await modelUser.create(body); 
-        res.json(user); 
+        res.json({data: user}); 
 
     }catch(e){
         res.status(404).send({error: e})
